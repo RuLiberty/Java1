@@ -1,7 +1,9 @@
+// задание 1
 public class Main {
 
     public static void main(String[] args) {
 
+        // задание 2
         byte a = 8; // инициализация byte
         byte otrA = -8; // инициализация отрицательного byte
         byte zero = 0;
@@ -14,6 +16,7 @@ public class Main {
 
         char g = 'A'; // инициализация char
         String h = "Hello World"; // инициализация String
+        String myName = "Дмитрий";
 
         boolean bool = true; // инициализация Boolean
 
@@ -21,18 +24,25 @@ public class Main {
 
         int bq = 10;
 
+        // задание 3
         System.out.println(FirstMetod(a,b,c,d));
 
-        // проверка работы метода
+        // задание 4. проверка работы метода
         System.out.println(isDot(a,b)); // 32508 не входит в диапазон (false)
         System.out.println(isDot(aq,bq)); // 15 входит в диапазон (true)
         System.out.println(isDot(aq,aq)); // 10 входит в диапозон (true)
 
+        // задание 5
         myOut(a); // положительное число
         myOut(otrA); // отрицательное число
         myOut(zero); // ноль
 
+        // задание 6
+        System.out.println(isNegative(a)); // false
+        System.out.println(isNegative(otrA)); // true
 
+        // задание 7
+        Hello(myName);
 
 
     }
@@ -48,7 +58,7 @@ public class Main {
     {
         boolean p = false;
         int с = a + b;
-        if ((с >= 10) & (с <= 20)) {
+        if ((с >= 10) && (с <= 20)) {
             p = true;
         }
         return p;
@@ -63,6 +73,28 @@ public class Main {
             System.out.println(a + " - Это отрицательное число");
         } else {
             System.out.println(a + " - Это или положительное число или 0");
+        }
+    }
+
+    // метод, которому в качестве параметра передается целое число, метод должен вернуть true, если число отрицательное;
+    public static boolean isNegative(int a) {
+        if (a < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // метод, которому в качестве параметра передается строка, обозначающая имя, метод должен вывести в консоль сообщение «Привет, указанное_имя!»
+    public static void Hello(String name) {
+        System.out.println("Привет, " + name + "!");
+    }
+
+    // метод, который определяет является ли год високосным, и выводит сообщение в консоль.
+    // Каждый 4-й год является високосным, кроме каждого 100-го, при этом каждый 400-й – високосный
+    public static void visocos(int year) {
+        if (((year%4) == 0) && ((year%100) != 0)) {
+
         }
     }
 }
