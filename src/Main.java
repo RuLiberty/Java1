@@ -3,6 +3,8 @@ public class Main {
     public static void main(String[] args) {
 
         byte a = 8; // инициализация byte
+        byte otrA = -8; // инициализация отрицательного byte
+        byte zero = 0;
         short b = 32500; // инициализация short
         int c = 256548475; // инициализация int
         long d = 1234567891011121314L; // инициализация long
@@ -26,6 +28,10 @@ public class Main {
         System.out.println(isDot(aq,bq)); // 15 входит в диапазон (true)
         System.out.println(isDot(aq,aq)); // 10 входит в диапозон (true)
 
+        myOut(a); // положительное число
+        myOut(otrA); // отрицательное число
+        myOut(zero); // ноль
+
 
 
 
@@ -46,5 +52,17 @@ public class Main {
             p = true;
         }
         return p;
+    }
+
+    /* метод, которому в качестве параметра передается целое число, метод должен напечатать в консоль положительное ли число передали, или отрицательное;
+    Замечание: ноль считаем положительным числом.
+     */
+    public static void myOut (int a) {
+        if (a < 0)
+        {
+            System.out.println(a + " - Это отрицательное число");
+        } else {
+            System.out.println(a + " - Это или положительное число или 0");
+        }
     }
 }
