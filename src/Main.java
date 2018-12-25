@@ -44,7 +44,7 @@ public class Main {
         // задание 7
         Hello(myName);
 
-
+        // задание 8
         visocos(1943); // не вискосный
         visocos(1904); // високосный
         visocos(1900); // не вискосный
