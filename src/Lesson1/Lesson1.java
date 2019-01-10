@@ -1,3 +1,5 @@
+package Lesson1;
+
 // задание 1
 public class Lesson1 {
 
