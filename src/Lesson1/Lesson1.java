@@ -1,5 +1,7 @@
+package Lesson1;
+
 // задание 1
-public class Main {
+public class Lesson1 {
 
     public static void main(String[] args) {
 
