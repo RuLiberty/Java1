@@ -8,6 +8,9 @@ public class Cross {
     static int SIZE_X = 3;
     static int SIZE_Y = 3;
 
+    static int blockX;
+    static int blockY;
+
     static char[][] field = new char[SIZE_X][SIZE_Y];
 
     static Scanner scanner = new Scanner(System.in);
@@ -66,9 +69,9 @@ public class Cross {
         int y;
         System.out.println("Ходит компьютер");
         do {
-            System.out.println("Введите координаты X и Y (1-3)");
-            x = random.nextInt(SIZE_X - 1);
-            y = random.nextInt(SIZE_Y - 1);
+            x = random.nextInt(SIZE_X);
+            y = random.nextInt(SIZE_Y);
+
         } while (!isCellValid(y, x));
         setSym(y, x, AI_DOT);
     }
@@ -86,28 +89,62 @@ public class Cross {
 
     static boolean checkwin(char sym) {
         //region Проверка
+        int flagDiag = 0;
 
      /*   | X   X   X  -->   |
           | X   X   X  -->   |
           | X   X   X  -->   |   Right
      */
-        if (field[0][0] == sym && field[0][1] == sym && field[0][2] == sym) return true;
-        if (field[1][0] == sym && field[1][1] == sym && field[1][2] == sym) return true;
-        if (field[2][0] == sym && field[2][1] == sym && field[2][2] == sym) return true;
+        for (int i = 0; i < SIZE_X; i++) {
+            int k = 0;
+            for (int j = 0; j < SIZE_Y; j++) {
+                if (field[i][j] == sym) {
+                    k++;
+                    if(k == 3) {return true;}
+                };
+            }
+        }
+
      /*   | X   X   X  |   |
           | X   X   X  |   |
           | X   X   X  V   |    DOWN
      */
-        if (field[0][0] == sym && field[1][0] == sym && field[2][0] == sym) return true;
-        if (field[0][1] == sym && field[1][1] == sym && field[2][1] == sym) return true;
-        if (field[0][2] == sym && field[1][2] == sym && field[2][2] == sym) return true;
+
+        for (int i = 0; i < SIZE_X; i++) {
+            int k = 0;
+            for (int j = 0; j < SIZE_Y; j++) {
+                if (field[j][i] == sym) {
+                    k++;
+                    if(k == 3) {return true;}
+                };
+            }
+        }
+
 
      /*   | X     X  |
           |    X     |
-          | X     X  | Diagonal
+          | X     X  | Diagonals
      */
-        if (field[0][0] == sym && field[1][1] == sym && field[2][2] == sym) return true;
-        if (field[0][0] == sym && field[0][1] == sym && field[0][2] == sym) return true;
+
+
+     // Main Diagonal
+        for (int i = 0; i < SIZE_Y; i++) {
+            if (field[i][i] == sym) {
+                flagDiag++;
+                if(flagDiag == 3) {return true;}
+            };
+        }
+        flagDiag = 0;
+
+     // Side diagonal
+        for (int i = 0; i < SIZE_Y; i++) {
+            if (field[i][2-i] == sym) {
+                flagDiag++;
+                if(flagDiag == 3) {return true;}
+            };
+        }
+        flagDiag = 0;
+
         //endregion
         return false;
     }
@@ -120,8 +157,6 @@ public class Cross {
         }
         return true;
     }
-
-
 
 
     public static void main(String[] args) {
@@ -143,7 +178,7 @@ public class Cross {
             aiStep();
             printField();
             if (checkwin(AI_DOT)) {
-                System.out.println("");
+                System.out.println("Компьютер победил");
                 break;
             }
             if(isFieldFull()){
