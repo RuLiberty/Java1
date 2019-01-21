@@ -2,12 +2,12 @@ package Lesson5;
 
 public class Person {
     //ФИО, должность, email, телефон, зарплата, возраст;
-    String name;
-    String position;
-    String email;
-    String telephone;
-    int salary;
-    int age;
+    private String name;
+    private String position;
+    private String email;
+    private String telephone;
+    public int salary;
+    public int age;
 
     //Конструктор класса должен заполнять эти поля при создании объекта;
 
