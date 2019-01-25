@@ -17,6 +17,8 @@ public class Plate {
         }
     }
 
+    public void addFood(int food){this.food += food;}
+
     public void info() {
         System.out.println("plate: " + food);
     }

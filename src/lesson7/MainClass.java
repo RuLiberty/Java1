@@ -6,6 +6,7 @@ public class MainClass {
         Cat cat1 = new Cat();
         Plate plate = new Plate(100);
         plate.info();
+        plate.addFood(10);
         cat.eat(plate);
         plate.info();
         cat1.eat(plate);
